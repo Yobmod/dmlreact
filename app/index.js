@@ -2,6 +2,7 @@ var react = require('react');
 var reactDOM = require('react-dom');
 
 var App = require ('./components/App');
+var Main = require ('./components/main');
 
 reactDOM.render(
 	<App />,
@@ -21,7 +22,8 @@ reactDOM.render(
 	document.getElementById('container')
 );
 
+
 reactDOM.render(
 	<App />,
-	document.getElementById('app')
+	document.getElementById('main')
 );
