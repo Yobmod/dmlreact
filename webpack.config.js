@@ -4,7 +4,7 @@ var BundleTracker = require('webpack-bundle-tracker');
 
 // var HTMLWebpackPlugin = require('html-webpack-plugin');
 // var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
-// 	template: __dirname + '/app/index.html',
+// 	template: __dirname + '/app/index.html',   //put templates here to webpack
 // 	filename: 'index.html',
 // 	inject: 'body'
 // });
@@ -14,17 +14,14 @@ var BundleTracker = require('webpack-bundle-tracker');
 //   filename: "vendor.js",
 //   minChunks: Infinity
 //   })
-// var CommonsChunkPluginConfig2 = new webpack.optimize.CommonsChunkPlugin({
-//     name: "index",
-//     filename: "index.js",
-//     minChunks: Infinity
-//     });
-
+//
 
 module.exports = {
-	entry: __dirname + '/app/index.jsx',
-//	{		app: __dirname + '/app/index.js',
-		//vendor: ["react", "react-dom"],
+  entry: {
+	  app: __dirname + '/app/index.jsx', //entry point, make for each page or load comonent.js for each div. Webpack should codesplit better so can bundle all together?
+	  hello: __dirname + '/app/hello.jsx',
+   },
+
 	module: {
 		loaders: [
 			{
@@ -36,11 +33,12 @@ module.exports = {
 				},
 	  externals: {  jquery: 'jQuery',
 				  React: 'react',
+				  underscore: 'underscore',
 	 			  ReactDOM: 'react-dom'  },
 	output: {
 		path: __dirname + '/static/js',
-		filename: 'bundle.js'
+		filename: "bundle.[name].js" //names bundles after original entry point files
 	},
-
-	//plugins: [HTMLWebpackPluginConfig, CommonsChunkPluginConfig1, CommonsChunkPluginConfig2]
+	//plugins: [new webpack.optimize.CommonsChunkPlugin({name: "hello", filename: "hello.bundle.js"})]
+//plugins: [HTMLWebpackPluginConfig, CommonsChunkPluginConfig1, CommonsChunkPluginConfig2]
 };

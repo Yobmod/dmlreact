@@ -12,6 +12,9 @@ def index():
 def hello():
     return render_template('hello.html')
 
+@app.route('/go')
+def go():
+    return render_template('go.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
