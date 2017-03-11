@@ -63,146 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-(function () {
-    var Treat = React.createClass({
-        displayName: 'Treat',
-
-        render: function render() {
-            var src = 'static/img/icons/icon_' + this.props.type + '.png';
-            return React.createElement(
-                'li',
-                null,
-                React.createElement('img', { src: src })
-            );
-        }
-    });
-
-    var Treats = React.createClass({
-        displayName: 'Treats',
-
-        render: function render() {
-            var treats = this.props.data.map(function (treat, index) {
-                return React.createElement(
-                    'ul',
-                    { key: index },
-                    React.createElement(Treat, { type: treat.type }),
-                    ';'
-                );
-            });
-
-            return React.createElement(
-                'ul',
-                { className: 'inline treats' },
-                treats
-            );
-        }
-    });
-
-    var DogFooder = React.createClass({
-        displayName: 'DogFooder',
-
-        getInitialState: function getInitialState() {
-            return {
-                treats: []
-            };
-        },
-
-        giveTreat: function giveTreat() {
-            var treats = this.state.treats;
-
-            var type;
-            var rand = Math.random();
-            if (rand > 0.80) {
-                type = 'steak';
-            } else if (rand > 0.4) {
-                type = 'bacon';
-            } else {
-                type = 'bone';
-            }
-
-            treats.push({ type: type });
-
-            this.setState({
-                treats: treats
-            });
-        },
-
-        takeTreat: function takeTreat() {
-            var treats = this.state.treats;
-            if (treats.length == 0) return;
-
-            treats.pop();
-            this.setState({
-                treats: treats
-            });
-        },
-
-        render: function render() {
-            var addButtonState = this.state.treats.length > 0 ? '' : ' disabled';
-
-            return React.createElement(
-                'div',
-                null,
-                React.createElement(
-                    'h3',
-                    null,
-                    'Treats: ',
-                    this.state.treats.length
-                ),
-                React.createElement(Treats, { data: this.state.treats }),
-                React.createElement('br', null),
-                React.createElement(
-                    'div',
-                    null,
-                    React.createElement(
-                        'button',
-                        { className: 'btn btn-large btn-success', onClick: this.giveTreat },
-                        'Good dog!'
-                    ),
-                    '  ',
-                    React.createElement(
-                        'button',
-                        { className: 'btn btn-large btn-danger ' + addButtonState, onClick: this.takeTreat },
-                        'Bad dog!'
-                    )
-                )
-            );
-        }
-    });
-
-    ReactDOM.render(React.createElement(DogFooder, null), document.getElementById('dogfood'));
-})();
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-(function () {
-    var Greeting = React.createClass({
-        displayName: 'Greeting',
-
-        render: function render() {
-            return React.DOM.h1({}, 'Hello, ' + this.props.name + '!');
-        }
-    });
-
-    ReactDOM.render(React.createElement(Greeting, { name: 'RandoName' }), document.getElementById('greeting'));
-})();
-
-/***/ }),
+/* 0 */,
+/* 1 */,
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -379,18 +245,8 @@ function calculateWinner(squares) {
 }
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-ReactDOM.render(React.createElement('parp', null), document.getElementById('parp'));
-
-/***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -398,11 +254,6 @@ ReactDOM.render(React.createElement('parp', null), document.getElementById('parp
 
 //var React = require('react');
 //var ReactDOM = require('react-dom');
-
-var App = __webpack_require__(3);
-var Hello = __webpack_require__(1);
-
-var Hello = __webpack_require__(0);
 
 var Hello = __webpack_require__(2);
 

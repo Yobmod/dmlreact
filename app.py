@@ -16,5 +16,9 @@ def hello():
 def go():
     return render_template('go.html')
 
+@app.route('/tictactoe')
+def tictactoe():
+    return render_template('tictactoe.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

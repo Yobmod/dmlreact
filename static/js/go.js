@@ -83,11 +83,11 @@ var PassView = React.createClass({
 
 var board = new Board(19);
 
-React.renderComponent(
+React.renderComponent(             
     <div>
         <AlertView board={board} />
         <PassView board={board} />
-        <BoardView board={board} />
+		<BoardView board={board} />
     </div>,
     document.getElementById('main')
 );

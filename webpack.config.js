@@ -20,6 +20,9 @@ module.exports = {
   entry: {
 	  app: __dirname + '/app/index.jsx', //entry point, make for each page or load comonent.js for each div. Webpack should codesplit better so can bundle all together?
 	  hello: __dirname + '/app/hello.jsx',
+	  games: __dirname + '/app/games.jsx',
+
+	
    },
 
 	module: {
