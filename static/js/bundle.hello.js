@@ -74,6 +74,25 @@
 
 
 (function () {
+    var Greeting = React.createClass({
+        displayName: 'Greeting',
+
+        render: function render() {
+            return React.DOM.h1({}, 'Hello, ' + this.props.name + '!');
+        }
+    });
+
+    ReactDOM.render(React.createElement(Greeting, { name: 'RandoName' }), document.getElementById('greeting'));
+})();
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+(function () {
     var Treat = React.createClass({
         displayName: 'Treat',
 
@@ -184,25 +203,6 @@
 })();
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-(function () {
-    var Greeting = React.createClass({
-        displayName: 'Greeting',
-
-        render: function render() {
-            return React.DOM.h1({}, 'Hello, ' + this.props.name + '!');
-        }
-    });
-
-    ReactDOM.render(React.createElement(Greeting, { name: 'RandoName' }), document.getElementById('greeting'));
-})();
-
-/***/ }),
 /* 2 */,
 /* 3 */,
 /* 4 */,
@@ -215,8 +215,8 @@
 //var React = require('react');
 //var ReactDOM = require('react-dom');
 
-var App = __webpack_require__(1);
-var Hello = __webpack_require__(0);
+var App = __webpack_require__(0);
+var Hello = __webpack_require__(1);
 
 /***/ })
 /******/ ]);
