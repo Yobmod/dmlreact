@@ -21,23 +21,32 @@ module.exports = {
 	  app: __dirname + '/app/index.jsx', //entry point, make for each page or load comonent.js for each div. Webpack should codesplit better so can bundle all together?
 	  hello: __dirname + '/app/hello.jsx',
 	  games: __dirname + '/app/games.jsx',
+	  typescript: __dirname + '/app/typescript.tsx',
 
-	
+   },
+      //devtool: "source-map",// Enable sourcemaps for debugging webpack's output.
+
+   resolve: {
+	   // Add '.ts' and '.tsx' as resolvable extensions.
+	   extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".jsx", ".js"]
    },
 
 	module: {
 		loaders: [
-			{
-				test: /\.(js|jsx)$/,
+			{	test: /\.(js|jsx)$/,
 				exclude: 'node_modules',
-				loader: 'babel-loader'
-						}
-					]
-				},
-	  externals: {  jquery: 'jQuery',
-				  React: 'react',
-				  underscore: 'underscore',
-	 			  ReactDOM: 'react-dom'  },
+				loader: 'babel-loader'	},
+			{ 	test: /\.(ts|tsx)?$/,
+		  		exclude: 'node_modules',
+				loader: "awesome-typescript-loader" }
+			],
+		//preLoaders: [{ test: /\.js$/, loader: "source-map-loader" } ] // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+			},
+
+	externals: {  'jquery': 'jQuery',
+				  	'react': 'React',
+				    'react-dom': 'ReactDOM'  },
+
 	output: {
 		path: __dirname + '/static/js',
 		filename: "bundle.[name].js" //names bundles after original entry point files

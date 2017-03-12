@@ -63,13 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */,
-/* 1 */,
-/* 2 */
+/******/ ({
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -245,8 +244,8 @@ function calculateWinner(squares) {
 }
 
 /***/ }),
-/* 3 */,
-/* 4 */
+
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -255,7 +254,8 @@ function calculateWinner(squares) {
 //var React = require('react');
 //var ReactDOM = require('react-dom');
 
-var Hello = __webpack_require__(2);
+var Hello = __webpack_require__(4);
 
 /***/ })
-/******/ ]);
+
+/******/ });

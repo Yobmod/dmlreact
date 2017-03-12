@@ -63,11 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86,9 +87,22 @@
 })();
 
 /***/ }),
-/* 1 */,
-/* 2 */,
-/* 3 */
+
+/***/ 10:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//var React = require('react');
+//var ReactDOM = require('react-dom');
+
+var App = __webpack_require__(5);
+var Hello = __webpack_require__(0);
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -177,20 +191,6 @@ var TweetBox = React.createClass({
 
 ReactDOM.render(React.createElement(TweetBox, null), document.getElementById("tweetbox"));
 
-/***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-//var React = require('react');
-//var ReactDOM = require('react-dom');
-
-var App = __webpack_require__(3);
-var Hello = __webpack_require__(0);
-
 /***/ })
-/******/ ]);
+
+/******/ });

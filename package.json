@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/bootstrap": "^3.3.32",
     "@types/chartjs": "0.0.29",
+    "@types/core-js": "^0.9.37",
     "@types/jquery": "^2.0.41",
     "@types/react": "^15.0.16",
     "@types/react-dom": "^0.14.23",

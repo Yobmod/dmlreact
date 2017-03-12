@@ -1,13 +1,18 @@
 {
     "compilerOptions": {
-        "outDir": "./app/components",
-        "sourceMap": true,
+        "outDir": "./static/js/",
+        "sourceMap": false,
         "noImplicitAny": true,
         "module": "commonjs",
-        "target": "es5",
+        "target": "es6",
         "jsx": "react"
     },
     "include": [
         "./app/**/*"
+    ],
+	"types": [
+        "core-js",
+		"react",
+		"react-dom"
     ]
 }
