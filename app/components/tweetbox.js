@@ -3,6 +3,7 @@ var TweetBox = React.createClass({
       text: "",
       photoAdded: false,
       };
+	  
   },
   handleChange: function(event) {
   this.setState({ text: event.target.value });
