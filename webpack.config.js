@@ -18,10 +18,10 @@ var BundleTracker = require('webpack-bundle-tracker');
 
 module.exports = {
   entry: {
-	  app: __dirname + '/app/index.jsx', //entry point, make for each page or load comonent.js for each div. Webpack should codesplit better so can bundle all together?
-	  hello: __dirname + '/app/hello.jsx',
-	  games: __dirname + '/app/games.jsx',
-	  typescript: __dirname + '/app/typescript.tsx',
+	  app: __dirname + '/app/index', //entry point, make for each page or load comonent.js for each div. Webpack should codesplit better so can bundle all together?
+	  hello: __dirname + '/app/hello',
+	  games: __dirname + '/app/games',
+	  typescript: __dirname + '/app/typescript',
 
    },
       //devtool: "source-map",// Enable sourcemaps for debugging webpack's output.

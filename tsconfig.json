@@ -1,9 +1,11 @@
-{
+{	"compileOnSave": true,
+	"tabSize": 4,
     "compilerOptions": {
         "outDir": "./static/js/",
         "sourceMap": false,
         "noImplicitAny": true,
-        "module": "commonjs",
+		"removeComments": false,
+		"module": "commonjs",
         "target": "es6",
         "jsx": "react"
     },
