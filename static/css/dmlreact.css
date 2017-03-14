@@ -48,11 +48,11 @@
   margin-right: 20px; }
 
 .top-menu2 a {
-  color: darkblue;
+  color: grey;
   font-size: 16pt; }
 
 .top-menu2 a:hover {
-  color: blue; }
+  color: darkblue; }
 
 footer {
   margin-top: 150;
@@ -116,7 +116,7 @@ body {
   background-image: url("../img/tree.png");
   background-repeat: no-repeat;
   background-position: bottom;
-  font-family: 'Arial', cursive;
+  font-family: "Arial", cursive;
   color: black; }
 
 .content {
@@ -135,12 +135,12 @@ body {
 h1, h1 a:visited {
   color: darkblue;
   font-size: 32px;
-  font-family: 'Arial'; }
+  font-family: "Arial", cursive; }
 
 h1 a, h1 a:hover {
   color: blue;
   font-size: 32px;
-  font-family: 'Arial'; }
+  font-family: "Arial", cursive; }
 
 .contact .glyphicon, .contact .glyphicon a {
   font-size: 50px;

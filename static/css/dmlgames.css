@@ -1,9 +1,24 @@
 #alerts {
-  height: 40px;
-  line-height: 40px; }
+  font: "Arial", cursive;
+  font-size: 30px;
+  height: 50px;
+  line-height: 50px; }
+
+#pass-btn {
+  font: "Arial", cursive;
+  font-size: 30px;
+  padding: 5px 10px 5px 10px;
+  margin: 10px 10px 10px 10px;
+  border-radius: 3px; }
 
 #board {
-  position: relative; }
+  height: 784px;
+  position: relative;
+  background: linear-gradient(45deg, darkgoldenrod, goldenrod, palegoldenrod);
+  border: 5px solid saddlebrown;
+  border-radius: 3px;
+  border-image: url(../img/woodeffect.jpg) 30 stretch;
+  z-index: 0; }
 
 .intersection {
   width: 40px;
@@ -32,16 +47,17 @@
   z-index: -1; }
 
 .intersection.black, .intersection.white {
-  border: 1px solid #000; }
+  border: none; }
 
 .intersection.black {
-  background-color: #444; }
+  background-color: black;
+  background: radial-gradient(dimgrey, black); }
 
 .intersection.white {
-  background-color: #eee; }
+  background-color: white;
+  background: radial-gradient(white, grey); }
 
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px; }
 
 ol, ul {
@@ -56,7 +72,7 @@ ol, ul {
   margin-bottom: 10px; }
 
 .square {
-  background: #fff;
+  background-color: white;
   border: 1px solid #999;
   float: left;
   font-size: 24px;

@@ -1,20 +1,51 @@
+$color1: grey;
+$color1HL: lightgrey;
+$color1HHL: white;
+
+$color1: grey;
+$color1LL: dimgrey;
+$color1LLL: black;
+
+$color2: goldenrod;
+$color2LL: darkgoldenrod;
+$color2HL: palegoldenrod;
+$color2LLL: sienna;
+
+$font1: 'Arial', cursive; //Helv, sans-serif;
+
+$tttboard: white;
+
+//-------------------------------------go
 #alerts {
-    height: 40px;
-    line-height: 40px;
+	font: $font1;
+	font-size: 30px;
+    height: 50px;
+    line-height: 50px;
 }
 
 #pass-btn {
+	font: $font1;
+	font-size: 30px;
+	padding: 5px 10px 5px 10px;
+	margin: 10px 10px 10px 10px;
+	border-radius: 3px;
 }
 
 #board {
+	height: 784px;
     position: relative;
-}
+	background: linear-gradient(45deg, $color2LL, $color2, $color2HL);
+	border: 5px solid saddlebrown;
+	border-radius: 3px;
+	border-image: url(../img/woodeffect.jpg) 30 stretch; //overwrites border color
+    z-index: 0; }
 
 .intersection {
     width: 40px;
     height: 40px;
     border-radius: 20px;
     position: absolute;
+
     box-sizing: border-box;
 }
 
@@ -40,19 +71,26 @@
 }
 
 .intersection.black, .intersection.white {
-    border: 1px solid #000;
+    border: none; //1px solid darkgrey;
 }
 
 .intersection.black {
-    background-color: #444;
+	background-color: $color1LLL;
+	//background: linear-gradient(45deg, $color1LLL, $color1); //angle of second color on top
+	background: radial-gradient($color1LL, $color1LLL); //first color outer // leave out %s for even distribution
 }
 
 .intersection.white {
-    background-color: #eee;
+	background-color: $color1HHL;
+    //background: linear-gradient(45deg, $color1, $color1HHL);
+	background: radial-gradient($color1HHL, $color1);
 }
 
+
+
+//--------------------- ttt
+
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
 }
 
@@ -71,7 +109,7 @@ ol, ul {
 }
 
 .square {
-  background: #fff;
+  background-color: $tttboard;
   border: 1px solid #999;
   float: left;
   font-size: 24px;

@@ -7,7 +7,7 @@ var BoardIntersection = React.createClass({
     },
     render: function() {
         var style = {
-            top: this.props.row * GRID_SIZE,
+            top: this.props.row * GRID_SIZE, //shift grid about
             left: this.props.col * GRID_SIZE
         };
 
@@ -41,8 +41,8 @@ var BoardView = React.createClass({
                     col: j
                 }));
         var style = {
-            width: this.state.board.size * GRID_SIZE,
-            height: this.state.board.size * GRID_SIZE
+            width: this.state.board.size * GRID_SIZE + 9,  //change board (background) size
+            height: this.state.board.size * GRID_SIZE + 9	//extra '10' to allow for grid borders
         };
         return React.DOM.div({"style": style, "id": "board"}, intersections);
     }
@@ -83,7 +83,7 @@ var PassView = React.createClass({
 
 var board = new Board(19);
 
-React.renderComponent(             
+React.renderComponent(
     <div>
         <AlertView board={board} />
         <PassView board={board} />

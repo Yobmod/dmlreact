@@ -1,3 +1,17 @@
+$color1: grey;
+$color1HL: lightgrey;
+$color1LL: dimgrey;
+$color1HHL: white;
+$color1LLL: black;
+
+$color2: darkblue;
+$color2HL: blue;
+
+$color3: darkorange;
+$color3HL: orangered;
+
+$font1: 'Arial', cursive; //Helv, sans-serif;
+
 .wmd-panel {
     margin-left: 0% !important;
     margin-right: 0% !important;
@@ -59,12 +73,12 @@
 }
 
 .top-menu2 a{
-	color: darkblue;
+	color: $color1;
 	font-size: 16pt;
    }
 
    .top-menu2 a:hover{
-	color: blue;
+	color: $color2;
 
    }
 
@@ -162,7 +176,7 @@ body {
 	background-image:  url("../img/tree.png");
 	background-repeat: no-repeat;
 	background-position: bottom;
-	font-family: 'Arial', cursive;
+	font-family: $font1;
 	color: black;
 	 }
 
@@ -187,13 +201,13 @@ body {
 h1, h1 a:visited {
 	color: darkblue;
 	font-size: 32px;
-	font-family: 'Arial';
+	font-family: $font1;
 }
 
 h1 a, h1 a:hover {
 	color: blue;
 	font-size: 32px;
-	font-family: 'Arial';
+	font-family: $font1;
 }
 
 .contact .glyphicon, .contact .glyphicon a{
