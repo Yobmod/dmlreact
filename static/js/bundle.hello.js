@@ -50,7 +50,7 @@
 	//var ReactDOM = require('react-dom');
 
 	var App = __webpack_require__(2);
-	var Hello = __webpack_require__(4);
+	var Hello = __webpack_require__(5);
 
 /***/ },
 /* 1 */,
@@ -73,7 +73,8 @@
 
 /***/ },
 /* 3 */,
-/* 4 */
+/* 4 */,
+/* 5 */
 /***/ function(module, exports) {
 
 	'use strict';

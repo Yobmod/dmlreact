@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var GRID_SIZE = 40; // size of grid squares
 
 var BoardIntersection = React.createClass({
@@ -12,7 +11,7 @@ var BoardIntersection = React.createClass({
         };
 
         var classes = "intersection";
-        if (this.props.color != 0)
+        if (this.props.color != Board.EMPTY)   // Board.EMPTY = 0
             classes += " " + (this.props.color == Board.BLACK ? "black" : "white");
 
         return (
@@ -82,20 +81,28 @@ var PassView = React.createClass({
 });
 
 
+var ContainerView = React.createClass({
+    getInitialState: function() {
+        return {'board': this.props.board};
+    },
+    onBoardUpdate: function() {
+        this.setState({"board": this.props.board});
+    },
+    render: function() {
+        return (
+            <div>
+                <AlertView board={this.state.board} />
+                <PassView board={this.state.board} />
+                <BoardView board={this.state.board}
+                    onPlay={this.onBoardUpdate.bind(this)} />
+            </div>
+        )
+    }
+});
 
-//var choose_size = Dropdown.chosenSize();
-//var board = new Board(choose_size);
-
-
-
-var board = new Board(9);
+var board = new Board(19);
 
 React.renderComponent(
-    <div>
-        <AlertView board={board} />
-        <PassView board={board} />
-
-		<BoardView board={board} />
-    </div>,
+    <ContainerView board={board} />,
     document.getElementById('main')
 );
