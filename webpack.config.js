@@ -22,7 +22,7 @@ module.exports = {
 	  hello: __dirname + '/app/hello',
 	  games: __dirname + '/app/games',
 	  typescript: __dirname + '/app/typescript',
-	  go_full: __dirname + '/app/go_full',
+	  go_game: __dirname + '/app/go_game',
 
    },
       //devtool: "source-map",// Enable sourcemaps for debugging webpack's output.

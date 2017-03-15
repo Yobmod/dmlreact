@@ -36,9 +36,10 @@ Board.prototype.end_game = function() {
 
 Board.prototype.play = function(i, j) {
     console.log("Played at " + i + ", " + j);
+	this.attempted_suicide = this.in_atari = false;
 
-    if (this.board[i][j] != Board.EMPTY)
-        return false;
+	    if (this.board[i][j] != Board.EMPTY)
+	        return false;
 
     var color = this.board[i][j] = this.current_color;
     var captured = [];
@@ -61,8 +62,9 @@ Board.prototype.play = function(i, j) {
     // detect suicide
     if (_.isEmpty(captured) && this.get_group(i, j)["liberties"] == 0) {
         this.board[i][j] = Board.EMPTY;
+		this.attempted_suicide = true;
         $(this).trigger("suicide");
-        return;
+        return false;
     }
 
     var self = this;
@@ -75,12 +77,18 @@ Board.prototype.play = function(i, j) {
     $(this).trigger("update");
 
     if (atari)
+		//
         $(this).trigger("atari");
-
-    this.last_move_passed = false;
-    this.switch_player();
+		this.in_atari = true;
+    	this.last_move_passed = false;
+    	this.switch_player();
+		return true;
 };
 
+/*
+ * Given a board position, returns a list of [i,j] coordinates representing
+ * orthagonally adjacent intersections
+ */
 Board.prototype.get_adjacent_intersections = function(i , j) {
     var neighbors = [];
     if (i > 0)
@@ -94,6 +102,14 @@ Board.prototype.get_adjacent_intersections = function(i , j) {
     return neighbors;
 };
 
+/*
+ * Performs a breadth-first search about an (i,j) position to find recursively
+ * orthagonally adjacent stones of the same color (stones with which it shares
+ * liberties). Returns null for if there is no stone at the specified position,
+ * otherwise returns an object with two keys: "liberties", specifying the
+ * number of liberties the group has, and "stones", the list of [i,j]
+ * coordinates of the group's members.
+ */
 Board.prototype.get_group = function(i, j) {
 
     var color = this.board[i][j];

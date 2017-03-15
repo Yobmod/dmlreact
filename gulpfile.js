@@ -6,7 +6,10 @@ var size = require('gulp-size'); // tell size of packed file
 // var gutil = require("gulp-util"); // gutil.log('') // gutil.replaceExtension('src.x', '.y') // gutil.file // gutil.template
 //var gulpBrowser = require("gulp-browser");  // allows browserify without webpack
 //var del = require('del'); // allows gulp delete files
-var webpack = require('webpack-stream');
+
+var webpack = require('webpack');
+var webpackstream = require('webpack-stream');
+var webpackconfig = require('./webpack.config.js');
 var exec = require('child_process').exec; // run commands eg. python app.py
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -33,7 +36,7 @@ gulp.task('watching', function() {
 
 gulp.task('webpacking', function() {
   var stream = gulp.src('./app/*') // Tells gulp where to look for source files?
-  .pipe(webpack( require('./webpack.config.js') )) // does webpack using the config file
+  .pipe(webpackstream(webpackconfig, webpack)) // does webpack using the config file
   .pipe(gulp.dest('./static/js/'))  // adds another output destination if different from webpack.config
   .pipe(size()) // gived sum of packed package sizes
   return stream;

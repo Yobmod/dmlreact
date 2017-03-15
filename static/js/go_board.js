@@ -77,9 +77,9 @@ Board.prototype.play = function(i, j) {
     $(this).trigger("update");
 
     if (atari)
-		this.in_atari = true;
+		//
         $(this).trigger("atari");
-
+		this.in_atari = true;
     	this.last_move_passed = false;
     	this.switch_player();
 		return true;
@@ -145,107 +145,3 @@ Board.prototype.get_group = function(i, j) {
         "stones": visited_list
     };
 }
-
-var GRID_SIZE = 40; // size of grid squares
-
-var BoardIntersection = React.createClass({
-    handleClick: function() {
-        this.props.board.play(this.props.row, this.props.col);
-    },
-	styling: function(){
-		style = {
-		top: this.props.row * GRID_SIZE, //shift grid about
-		left: this.props.col * GRID_SIZE}
-	},
-
-	classing: function(){
-		 var classes = "intersection";
-		 if (this.props.color != Board.EMPTY)   // Board.EMPTY = 0
-			classes += " " + (this.props.color == Board.BLACK ? "black" : "white");
-			return classes;
-	},
-    render: function() {
-        return (
-            <div onClick={this.handleClick} className={this.state.classing} style={this.state.styling}></div>
-        );
-    }
-});
-
-var BoardView = React.createClass({
-    getInitialState: function() {
-        var self = this;
-		var intersections = [];
-        $(this.props.board).on("update", function(e) {
-            console.log(e);
-            self.setState({"board": self.props.board});
-        	});
-        return {"board": this.props.board}
-    },
-	styling: function (){
-		 		 return style = {
-		width: this.state.board.size * GRID_SIZE + 9,  //change board (background) size
-		height: this.state.board.size * GRID_SIZE + 9}	//extra '10' to allow for grid borders
-},
-grid: function() {
-			var intersections = [];
-			for (var i = 0; i < this.state.board.size; i++)
-			for (var j = 0; j < this.state.board.size; j++)
-					intersections.push(BoardIntersection({
-						board: this.state.board,
-						color: this.state.board.board[i][j],
-						row: i,
-						col: j
-				}));
-},
-    render: function(){
-
-        	return(
-				 <div style = {this.state.styling} id = "board">{this.props.board.intersections}</div>
-		  			);
-    					}
-});
-
-var AlertView = React.createClass({
-    getInitialState: function() {
-        var self = this;
-        $(this.props.board).on("atari", function(e) {
-            self.setState({"text": "ATARI!"});
-        });
-        $(this.props.board).on("suicide", function(e) {
-            self.setState({"text": "SUICIDE!"});
-        });
-        $(this.props.board).on("update", function(e) {
-            self.setState({"text": null});
-        });
-
-        return {"text": null};
-    },
-    render: function() {
-        return (
-            <div id="alerts">{this.state.text}</div>
-        );
-    }
-});
-
-var PassView = React.createClass({
-    handleClick: function(e) {
-        this.props.board.pass();
-    },
-    render: function() {
-        return (
-            <input id="pass-btn" type="button" value="Pass" onClick={this.handleClick} />
-        );
-    }
-});
-
-
-var board = new Board(9);
-
-ReactDOM.render(
-    <div>
-        <AlertView board={board} />
-        <PassView board={board} />
-		<BoardView board={board} />
-    </div>,
-    document.getElementById('main')
-);

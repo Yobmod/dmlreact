@@ -1,321 +1,352 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-
+/******/ 		module.l = true;
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/******/ ({
 
-	'use strict';
+/***/ 4:
+/***/ (function(module, exports, __webpack_require__) {
 
-	//var React = require('react');
-	//var ReactDOM = require('react-dom');
+"use strict";
 
-	var Hello = __webpack_require__(3);
-	var Hello = __webpack_require__(4);
 
-/***/ },
-/* 1 */,
-/* 2 */,
-/* 3 */
-/***/ function(module, exports) {
+//var React = require('react');
 
-	'use strict';
+var Radiomenu = React.createClass({
+		displayName: 'Radiomenu',
 
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+		getInitialState: function getInitialState() {
+				return {
+						selectedOption: 'option3'
+				};
+		},
+		handleOptionChange: function handleOptionChange(changeEvent) {
+				this.setState({
+						selectedOption: changeEvent.target.value
+				});
+		},
+		handleFormSubmit: function handleFormSubmit(formSubmitEvent) {
+				formSubmitEvent.preventDefault();
+				console.log('You have selected:', this.state.selectedOption);
+				return this.state.selectedOption;
+		},
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+		render: function render() {
+				return React.createElement(
+						'div',
+						{ className: 'container' },
+						React.createElement(
+								'div',
+								{ className: 'row' },
+								React.createElement(
+										'div',
+										{ className: 'col-sm-12' },
+										React.createElement(
+												'form',
+												{ onSubmit: this.handleFormSubmit },
+												React.createElement(
+														'div',
+														{ className: 'radio' },
+														React.createElement(
+																'label',
+																null,
+																React.createElement('input', { type: 'radio', value: 'option1', checked: this.state.selectedOption === 'option1',
+																		onChange: this.handleOptionChange }),
+																'Option 1'
+														)
+												),
+												React.createElement(
+														'div',
+														{ className: 'radio' },
+														React.createElement(
+																'label',
+																null,
+																React.createElement('input', { type: 'radio', value: 'option2', checked: this.state.selectedOption === 'option2',
+																		onChange: this.handleOptionChange }),
+																'Option 2'
+														)
+												),
+												React.createElement(
+														'div',
+														{ className: 'radio' },
+														React.createElement(
+																'label',
+																null,
+																React.createElement('input', { type: 'radio', value: 'option3', checked: this.state.selectedOption === 'option3',
+																		onChange: this.handleOptionChange }),
+																'Option 3'
+														)
+												),
+												React.createElement(
+														'button',
+														{ className: 'btn btn-default', type: 'submit' },
+														'Save'
+												)
+										)
+								)
+						)
+				);
+		}
+});
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+module.exports = Radiomenu;
+ReactDOM.render(React.createElement(Radiomenu, null), document.getElementById('radioselect'));
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+/***/ }),
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+/***/ 5:
+/***/ (function(module, exports, __webpack_require__) {
 
-	//class Square extends React.Component {
-	//constructor() {
-	//super();
-	//this.state = {
-	//value: null,
-	//};
-	// }
-	// render() {
-	// return (
-	//<button className="square" onClick={() => this.props.onClick()}>
-	// {this.props.value}
-	//</button>
-	//  );   }   }
+"use strict";
 
-	function Square(props) {
-	  return React.createElement(
-	    'button',
-	    { className: 'square', onClick: function onClick() {
-	        return props.onClick();
-	      } },
-	    props.value
-	  );
-	}
 
-	var Board = function (_React$Component) {
-	  _inherits(Board, _React$Component);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-	  function Board() {
-	    _classCallCheck(this, Board);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	    var _this = _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).call(this));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	    _this.state = {
-	      squares: Array(9).fill(null),
-	      xIsNext: true
-	    };
-	    return _this;
-	  }
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	  _createClass(Board, [{
-	    key: 'handleClick',
-	    value: function handleClick(i) {
-	      var squares = this.state.squares.slice();
-	      if (calculateWinner(squares) || squares[i]) {
-	        return;
-	      }
-	      squares[i] = this.state.xIsNext ? 'X' : 'O';
-	      this.setState({
-	        squares: squares,
-	        xIsNext: !this.state.xIsNext
-	      });
-	    }
-	  }, {
-	    key: 'renderSquare',
-	    value: function renderSquare(i) {
-	      var _this2 = this;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	      return React.createElement(Square, { value: this.state.squares[i], onClick: function onClick() {
-	          return _this2.handleClick(i);
-	        } });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var winner = calculateWinner(this.state.squares);
-	      var status = void 0;
-	      if (winner) {
-	        status = 'Winner: ' + winner;
-	      } else {
-	        status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-	      }
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'div',
-	          { className: 'status' },
-	          status
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'board-row' },
-	          this.renderSquare(0),
-	          this.renderSquare(1),
-	          this.renderSquare(2)
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'board-row' },
-	          this.renderSquare(3),
-	          this.renderSquare(4),
-	          this.renderSquare(5)
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'board-row' },
-	          this.renderSquare(6),
-	          this.renderSquare(7),
-	          this.renderSquare(8)
-	        )
-	      );
-	    }
-	  }]);
+//class Square extends React.Component {
+//constructor() {
+//super();
+//this.state = {
+//value: null,
+//};
+// }
+// render() {
+// return (
+//<button className="square" onClick={() => this.props.onClick()}>
+// {this.props.value}
+//</button>
+//  );   }   }
 
-	  return Board;
-	}(React.Component);
+function Square(props) {
+  return React.createElement(
+    'button',
+    { className: 'square', onClick: function onClick() {
+        return props.onClick();
+      } },
+    props.value
+  );
+}
 
-	var Game = function (_React$Component2) {
-	  _inherits(Game, _React$Component2);
+var Board = function (_React$Component) {
+  _inherits(Board, _React$Component);
 
-	  function Game() {
-	    _classCallCheck(this, Game);
+  function Board() {
+    _classCallCheck(this, Board);
 
-	    return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).apply(this, arguments));
-	  }
+    var _this = _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).call(this));
 
-	  _createClass(Game, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { className: 'game' },
-	        React.createElement(
-	          'div',
-	          { className: 'game-board' },
-	          React.createElement(Board, null)
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'game-info' },
-	          React.createElement('div', null),
-	          React.createElement('ol', null)
-	        )
-	      );
-	    }
-	  }]);
+    _this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true
+    };
+    return _this;
+  }
 
-	  return Game;
-	}(React.Component);
+  _createClass(Board, [{
+    key: 'handleClick',
+    value: function handleClick(i) {
+      var squares = this.state.squares.slice();
+      if (calculateWinner(squares) || squares[i]) {
+        return;
+      }
+      squares[i] = this.state.xIsNext ? 'X' : 'O';
+      this.setState({
+        squares: squares,
+        xIsNext: !this.state.xIsNext
+      });
+    }
+  }, {
+    key: 'renderSquare',
+    value: function renderSquare(i) {
+      var _this2 = this;
 
-	// ========================================
+      return React.createElement(Square, { value: this.state.squares[i], onClick: function onClick() {
+          return _this2.handleClick(i);
+        } });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var winner = calculateWinner(this.state.squares);
+      var status = void 0;
+      if (winner) {
+        status = 'Winner: ' + winner;
+      } else {
+        status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      }
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'div',
+          { className: 'status' },
+          status
+        ),
+        React.createElement(
+          'div',
+          { className: 'board-row' },
+          this.renderSquare(0),
+          this.renderSquare(1),
+          this.renderSquare(2)
+        ),
+        React.createElement(
+          'div',
+          { className: 'board-row' },
+          this.renderSquare(3),
+          this.renderSquare(4),
+          this.renderSquare(5)
+        ),
+        React.createElement(
+          'div',
+          { className: 'board-row' },
+          this.renderSquare(6),
+          this.renderSquare(7),
+          this.renderSquare(8)
+        )
+      );
+    }
+  }]);
 
-	ReactDOM.render(React.createElement(Game, null), document.getElementById('tictactoe'));
+  return Board;
+}(React.Component);
 
-	function calculateWinner(squares) {
-	  var lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-	  for (var i = 0; i < lines.length; i++) {
-	    var _lines$i = _slicedToArray(lines[i], 3),
-	        a = _lines$i[0],
-	        b = _lines$i[1],
-	        c = _lines$i[2];
+var Game = function (_React$Component2) {
+  _inherits(Game, _React$Component2);
 
-	    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-	      return squares[a];
-	    }
-	  }
-	  return null;
-	}
+  function Game() {
+    _classCallCheck(this, Game);
 
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
+    return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).apply(this, arguments));
+  }
 
-	'use strict';
+  _createClass(Game, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        { className: 'game' },
+        React.createElement(
+          'div',
+          { className: 'game-board' },
+          React.createElement(Board, null)
+        ),
+        React.createElement(
+          'div',
+          { className: 'game-info' },
+          React.createElement('div', null),
+          React.createElement('ol', null)
+        )
+      );
+    }
+  }]);
 
-	//var React = require('react');
+  return Game;
+}(React.Component);
 
-	var Radiomenu = React.createClass({
-			displayName: 'Radiomenu',
+// ========================================
 
-			getInitialState: function getInitialState() {
-					return {
-							selectedOption: 'option3'
-					};
-			},
-			handleOptionChange: function handleOptionChange(changeEvent) {
-					this.setState({
-							selectedOption: changeEvent.target.value
-					});
-			},
-			handleFormSubmit: function handleFormSubmit(formSubmitEvent) {
-					formSubmitEvent.preventDefault();
-					console.log('You have selected:', this.state.selectedOption);
-					return this.state.selectedOption;
-			},
+ReactDOM.render(React.createElement(Game, null), document.getElementById('tictactoe'));
 
-			render: function render() {
-					return React.createElement(
-							'div',
-							{ className: 'container' },
-							React.createElement(
-									'div',
-									{ className: 'row' },
-									React.createElement(
-											'div',
-											{ className: 'col-sm-12' },
-											React.createElement(
-													'form',
-													{ onSubmit: this.handleFormSubmit },
-													React.createElement(
-															'div',
-															{ className: 'radio' },
-															React.createElement(
-																	'label',
-																	null,
-																	React.createElement('input', { type: 'radio', value: 'option1', checked: this.state.selectedOption === 'option1',
-																			onChange: this.handleOptionChange }),
-																	'Option 1'
-															)
-													),
-													React.createElement(
-															'div',
-															{ className: 'radio' },
-															React.createElement(
-																	'label',
-																	null,
-																	React.createElement('input', { type: 'radio', value: 'option2', checked: this.state.selectedOption === 'option2',
-																			onChange: this.handleOptionChange }),
-																	'Option 2'
-															)
-													),
-													React.createElement(
-															'div',
-															{ className: 'radio' },
-															React.createElement(
-																	'label',
-																	null,
-																	React.createElement('input', { type: 'radio', value: 'option3', checked: this.state.selectedOption === 'option3',
-																			onChange: this.handleOptionChange }),
-																	'Option 3'
-															)
-													),
-													React.createElement(
-															'button',
-															{ className: 'btn btn-default', type: 'submit' },
-															'Save'
-													)
-											)
-									)
-							)
-					);
-			}
-	});
+function calculateWinner(squares) {
+  var lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+  for (var i = 0; i < lines.length; i++) {
+    var _lines$i = _slicedToArray(lines[i], 3),
+        a = _lines$i[0],
+        b = _lines$i[1],
+        c = _lines$i[2];
 
-	module.exports = Radiomenu;
-	ReactDOM.render(React.createElement(Radiomenu, null), document.getElementById('radioselect'));
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
 
-/***/ }
-/******/ ]);
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//var React = require('react');
+//var ReactDOM = require('react-dom');
+
+var Hello = __webpack_require__(5);
+var Hello = __webpack_require__(4);
+
+/***/ })
+
+/******/ });
