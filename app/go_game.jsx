@@ -1,3 +1,5 @@
+var Global = require('react-global');
+
 var GRID_SIZE = 40; // size of grid squares
 
 var BoardIntersection = React.createClass({
@@ -93,14 +95,80 @@ var PassView = React.createClass({
 });
 
 
-var board = new Board(19);
 
+//var gridsize = new Board(19); //default board size
+
+var GoContainer = React.createClass({
+		getInitialState: function(){
+			return {gridsize: "9"}; //default board size
+		},
+		sizing: function() {
+      		this.setState({	gridsize: this.refs.Rm.state.selectedOption	})
+		},
+
+		// siZing: function(size) {
+		// 	this.setState({gridsize: size.this.children.state.gridsize});
+		// 	console.log(this.state.gridsize);
+		// 	console.log(this.props.gridsize);
+		// 		},
+		render: function(){
+			var board = new Board(this.state.gridsize); // Board function defined glabally
+		return (<div  className="col-sm-8">
+					<Radiomenu gridsize={this.state.gridsize} ref="Rm"/>
+		        	<AlertView board={board} />
+		        	<PassView board={board} />
+					<BoardView board={board} />
+					{this.state.gridsize}{this.refs.Rm.state.selectedOption	}
+				</div>)
+		}
+})
+
+//============================================================
+var Radiomenu = React.createClass({
+	getInitialState: function () {
+    	return {selectedOption: "19", gridsize: "19"};
+  	},
+
+	handleOptionChange: function (changeEvent) {
+  		this.setState({selectedOption: changeEvent.target.value});
+	},
+	handleFormSubmit: function (formSubmitEvent) {
+  		formSubmitEvent.preventDefault();
+		this.setState({gridsize: this.state.selectedOption});
+		console.log('You have selected:', this.state.gridsize);
+
+		},
+  	render: function () {
+		var board = new Board(this.state.gridsize); // Board function is defined glabally
+		return (
+			<div>
+		      <form onSubmit={this.handleFormSubmit}>
+		        	<div className="radio">
+		          		<label><input type="radio" value="9" checked={this.state.selectedOption === "9"}
+						onChange={this.handleOptionChange}/>9</label>
+		        	</div>
+					<div className="radio">
+						<label><input type="radio" value="13" checked={this.state.selectedOption === "13"}
+						onChange={this.handleOptionChange}/>13</label>
+					</div>
+					<div className="radio">
+						<label><input type="radio" value="19" checked={this.state.selectedOption === "19"}
+						onChange={this.handleOptionChange}/>19</label>
+					</div>
+					<button className="btn btn-default" type="submit">Resize</button>
+					<p> Grid-size: {this.state.selectedOption}</p>
+		      </form>
+			  <AlertView board={board} />
+			  <PassView board={board} />
+			  <BoardView board={board} />
+			  </div>
+			  	)
+			}
+  		})
+
+//=======================================================================
 
 ReactDOM.render(
-		<div  className="col-sm-8">
-        <AlertView board={board} />
-        <PassView board={board} />
-		<BoardView board={board} />
-	</div>,
-    document.getElementById('main')
+		<Radiomenu />,
+		    document.getElementById('main')
 );

@@ -63,16 +63,25 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 10:
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = React;
+
+/***/ }),
+
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var Global = __webpack_require__(7);
 
 var GRID_SIZE = 40; // size of grid squares
 
@@ -182,15 +191,170 @@ var PassView = React.createClass({
     }
 });
 
-var board = new Board(19);
+//var gridsize = new Board(19); //default board size
 
-ReactDOM.render(React.createElement(
-    "div",
-    { className: "col-sm-8" },
-    React.createElement(AlertView, { board: board }),
-    React.createElement(PassView, { board: board }),
-    React.createElement(BoardView, { board: board })
-), document.getElementById('main'));
+var GoContainer = React.createClass({
+    displayName: "GoContainer",
+
+    getInitialState: function getInitialState() {
+        return { gridsize: "9" }; //default board size
+    },
+    sizing: function sizing() {
+        this.setState({ gridsize: this.refs.Rm.state.selectedOption });
+    },
+
+    // siZing: function(size) {
+    // 	this.setState({gridsize: size.this.children.state.gridsize});
+    // 	console.log(this.state.gridsize);
+    // 	console.log(this.props.gridsize);
+    // 		},
+    render: function render() {
+        var board = new Board(this.state.gridsize); // Board function defined glabally
+        return React.createElement(
+            "div",
+            { className: "col-sm-8" },
+            React.createElement(Radiomenu, { gridsize: this.state.gridsize, ref: "Rm" }),
+            React.createElement(AlertView, { board: board }),
+            React.createElement(PassView, { board: board }),
+            React.createElement(BoardView, { board: board }),
+            this.state.gridsize,
+            this.refs.Rm.state.selectedOption
+        );
+    }
+});
+
+//============================================================
+var Radiomenu = React.createClass({
+    displayName: "Radiomenu",
+
+    getInitialState: function getInitialState() {
+        return { selectedOption: "19", gridsize: "19" };
+    },
+
+    handleOptionChange: function handleOptionChange(changeEvent) {
+        this.setState({ selectedOption: changeEvent.target.value });
+    },
+    handleFormSubmit: function handleFormSubmit(formSubmitEvent) {
+        formSubmitEvent.preventDefault();
+        this.setState({ gridsize: this.state.selectedOption });
+        console.log('You have selected:', this.state.gridsize);
+    },
+    render: function render() {
+        var board = new Board(this.state.gridsize); // Board function is defined glabally
+        return React.createElement(
+            "div",
+            null,
+            React.createElement(
+                "form",
+                { onSubmit: this.handleFormSubmit },
+                React.createElement(
+                    "div",
+                    { className: "radio" },
+                    React.createElement(
+                        "label",
+                        null,
+                        React.createElement("input", { type: "radio", value: "9", checked: this.state.selectedOption === "9",
+                            onChange: this.handleOptionChange }),
+                        "9"
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "radio" },
+                    React.createElement(
+                        "label",
+                        null,
+                        React.createElement("input", { type: "radio", value: "13", checked: this.state.selectedOption === "13",
+                            onChange: this.handleOptionChange }),
+                        "13"
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "radio" },
+                    React.createElement(
+                        "label",
+                        null,
+                        React.createElement("input", { type: "radio", value: "19", checked: this.state.selectedOption === "19",
+                            onChange: this.handleOptionChange }),
+                        "19"
+                    )
+                ),
+                React.createElement(
+                    "button",
+                    { className: "btn btn-default", type: "submit" },
+                    "Resize"
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    " Grid-size: ",
+                    this.state.selectedOption
+                )
+            ),
+            React.createElement(AlertView, { board: board }),
+            React.createElement(PassView, { board: board }),
+            React.createElement(BoardView, { board: board })
+        );
+    }
+});
+
+//=======================================================================
+
+ReactDOM.render(React.createElement(Radiomenu, null), document.getElementById('main'));
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(9);
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var React = __webpack_require__(0);
+
+var Global = React.createClass({
+  displayName: 'Global',
+
+  statics: {
+    get: function get(name) {
+      return window[name];
+    }
+  },
+
+  shouldComponentUpdate: function shouldComponentUpdate() {
+    return false;
+  },
+
+  getScript: function getScript() {
+    var script = '';
+    for (var key in this.props.values || {}) {
+      script += 'var ' + key + '=' + JSON.stringify(this.props.values[key]) + ';';
+    }
+    return script;
+  },
+
+  render: function render() {
+    return React.createElement("script", {
+      type: "text/javascript",
+      dangerouslySetInnerHTML: {
+        __html: this.getScript()
+      }
+    });
+  }
+});
+
+module.exports = Global;
 
 /***/ })
 
