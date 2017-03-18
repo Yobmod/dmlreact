@@ -12,7 +12,6 @@
   border-radius: 3px; }
 
 #board {
-  height: 784px;
   position: relative;
   background: linear-gradient(45deg, darkgoldenrod, goldenrod, palegoldenrod);
   border: 5px solid saddlebrown;

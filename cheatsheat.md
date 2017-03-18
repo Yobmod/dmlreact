@@ -22,3 +22,4 @@ git push origin master
 git pull origin master
 git fetch
 git reset --hard origin/master
+git clone

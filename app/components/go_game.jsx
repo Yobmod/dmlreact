@@ -1,3 +1,5 @@
+import Board from './go_board';
+
 var GRID_SIZE = 40; // size of grid squares
 
 var BoardIntersection = React.createClass({
@@ -29,14 +31,8 @@ var BoardView = React.createClass({
         });
         return {"board": this.props.board}
     },
-	// styling: function(){
-	// 	return style = {
-	// 		width: this.state.board.size * GRID_SIZE + 9,  //change board (background) size
-	// 		height: this.state.board.size * GRID_SIZE + 9	//extra '10' to allow for grid borders
-	// 	};			},
     render: function() {
         var intersections = [];
-		//var factory = x;
         for (var i = 0; i < this.state.board.size; i++)
             for (var j = 0; j < this.state.board.size; j++)
                 intersections.push(
@@ -54,8 +50,7 @@ var BoardView = React.createClass({
         };
         return (
 			<div style={style} id="board">{intersections}</div>
-			//React.DOM.div({"style": style, "id": "board"}, intersections)
-	);
+		);
     }
 });
 
@@ -71,7 +66,6 @@ var AlertView = React.createClass({
         $(this.props.board).on("update", function(e) {
             self.setState({"text": null});
         });
-
         return {"text": null};
     },
     render: function() {
@@ -93,14 +87,61 @@ var PassView = React.createClass({
 });
 
 
-var board = new Board(19);
 
+//var gridsize = new Board(19); //default board size
+
+var GoContainer9 = React.createClass({
+		getInitialState: function(){
+			return {gridsize: "9"}; //default board size
+		},
+		render: function(){
+			var board = new Board(this.state.gridsize); // Board function defined glabally
+			return (<div  className="col-sm-8" id={this.state.gridsize}>
+					<AlertView board={board} />
+		        	<PassView board={board} />
+					<BoardView board={board} />
+					</div>)
+		}
+})
+
+var GoContainer13 = React.createClass({
+		getInitialState: function(){
+			return {gridsize: "13"}; //default board size
+		},
+		render: function(){
+			var board = new Board(this.state.gridsize); // Board function defined glabally
+			return (<div  className="col-sm-8" id={this.state.gridsize}>
+					<AlertView board={board} />
+		        	<PassView board={board} />
+					<BoardView board={board} />
+					</div>)
+		}
+})
+var GoContainer19 = React.createClass({
+		getInitialState: function(){
+			return {gridsize: "19"}; //default board size
+		},
+		render: function(){
+			var board = new Board(this.state.gridsize); // Board function defined glabally
+			return (<div  className="col-sm-8" id={this.state.gridsize}>
+					<AlertView board={board} />
+		        	<PassView board={board} />
+					<BoardView board={board} />
+					</div>)
+		}
+})
+
+//=======================================================================
 
 ReactDOM.render(
-		<div  className="col-sm-8">
-        <AlertView board={board} />
-        <PassView board={board} />
-		<BoardView board={board} />
-	</div>,
-    document.getElementById('main')
+		<GoContainer9 />,
+		    document.getElementById('gocontainer9')
+);
+ReactDOM.render(
+		<GoContainer13 />,
+		    document.getElementById('gocontainer13')
+);
+ReactDOM.render(
+		<GoContainer19 />,
+		    document.getElementById('gocontainer19')
 );

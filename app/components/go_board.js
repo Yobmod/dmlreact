@@ -32,6 +32,10 @@ Board.prototype.pass = function() {
 
 Board.prototype.end_game = function() {
     console.log("GAME OVER");
+	window.alert("GAME OVER")
+ 	//for([i][j]){wtotal = 0; if(white || all neighbours == white){wtotal += 1};
+	//if(wtotal > btotal){ alert("white wins")}else{alert("black wins")}
+
 };
 
 Board.prototype.play = function(i, j) {
@@ -145,3 +149,6 @@ Board.prototype.get_group = function(i, j) {
         "stones": visited_list
     };
 }
+
+
+export default Board
