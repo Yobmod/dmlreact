@@ -27,7 +27,7 @@ gulp.task('default',
 
 
 gulp.task('watching', function() {
-	gulp.watch(['./app/*.jsx', './app/*.tsx', './app/**/*.tsx', './app/**/*.jsx'], ['webpacking']);
+	gulp.watch(['./app/*.jsx', './app/*.tsx', './app/**/*.js', './app/**/*.tsx', './app/**/*.jsx'], ['webpacking']);
 	gulp.watch('./app/**/*.scss', ['sassing']);
 	gulp.watch('./app/**/*.less', ['lessing']);
 	gulp.watch('./templates/*.*', ['runserver']);

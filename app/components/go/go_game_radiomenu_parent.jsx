@@ -1,5 +1,3 @@
-var Global = require('react-global');
-
 var GRID_SIZE = 40; // size of grid squares
 
 var BoardIntersection = React.createClass({

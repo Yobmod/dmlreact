@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -220,7 +220,7 @@ exports.default = Board;
 
 /***/ }),
 
-/***/ 13:
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -238,12 +238,18 @@ var Game = __webpack_require__(5);
 
 var Game = __webpack_require__(6);
 
-//todo: calculate winner
+//todo: calculate winner, overlay screen declare wnner
+// stared nodes
+// select board style, stone styles
+//		turn indicator
 //	undo last move or keep list of moves
+//	float pass, undo, turn, score on scroll
+//  zoom box overlay on float option?
 //		make board rerender to any size
 //		3 neighbour Go (hexagonal board)
 //		tibeten / koreon go
 //		make switch player over network
+// http://ajhyndman.github.io/go-react-redux-elm/react-redux/
 
 /***/ }),
 
@@ -359,7 +365,7 @@ var PassView = React.createClass({
 });
 
 //var gridsize = new Board(19); //default board size
-
+//for x in [9,13,19], var gocontainerx = ...
 var GoContainer9 = React.createClass({
     displayName: "GoContainer9",
 
@@ -370,7 +376,7 @@ var GoContainer9 = React.createClass({
         var board = new _go_board2.default(this.state.gridsize); // Board function defined glabally
         return React.createElement(
             "div",
-            { className: "col-sm-8", id: this.state.gridsize },
+            { id: this.state.gridsize },
             React.createElement(AlertView, { board: board }),
             React.createElement(PassView, { board: board }),
             React.createElement(BoardView, { board: board })
@@ -388,7 +394,7 @@ var GoContainer13 = React.createClass({
         var board = new _go_board2.default(this.state.gridsize); // Board function defined glabally
         return React.createElement(
             "div",
-            { className: "col-sm-8", id: this.state.gridsize },
+            { id: this.state.gridsize },
             React.createElement(AlertView, { board: board }),
             React.createElement(PassView, { board: board }),
             React.createElement(BoardView, { board: board })
@@ -405,7 +411,7 @@ var GoContainer19 = React.createClass({
         var board = new _go_board2.default(this.state.gridsize); // Board function defined glabally
         return React.createElement(
             "div",
-            { className: "col-sm-8", id: this.state.gridsize },
+            { id: this.state.gridsize },
             React.createElement(AlertView, { board: board }),
             React.createElement(PassView, { board: board }),
             React.createElement(BoardView, { board: board })
@@ -506,8 +512,8 @@ $(document).ready(function () {
 	$("#gomenubutton").click(function (e) {
 		var strcont = "#gocontainer";
 		var gridsize = strcont.concat($('input:checked').val());
-		$('.gocontain').not(gridsize).hide();
-		$(gridsize).show();
+		$('.gocontain').not(gridsize).fadeOut(1000).delay(500);
+		$(gridsize).delay(500).fadeIn(1000);
 	});
 });
 

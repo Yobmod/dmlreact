@@ -63,12 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 12:
+/***/ 11:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77,102 +77,11 @@
 //var React = require('react');
 //var ReactDOM = require('react-dom');
 
-var Hello = __webpack_require__(8);
-var Hello = __webpack_require__(7);
+var ttt = __webpack_require__(7);
 
 /***/ }),
 
 /***/ 7:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-//var React = require('react');
-
-var Radiomenu = React.createClass({
-		displayName: 'Radiomenu',
-
-		getInitialState: function getInitialState() {
-				return {
-						selectedOption: 'option3'
-				};
-		},
-		handleOptionChange: function handleOptionChange(changeEvent) {
-				this.setState({
-						selectedOption: changeEvent.target.value
-				});
-		},
-		handleFormSubmit: function handleFormSubmit(formSubmitEvent) {
-				formSubmitEvent.preventDefault();
-				console.log('You have selected:', this.state.selectedOption);
-				return this.state.selectedOption;
-		},
-
-		render: function render() {
-				return React.createElement(
-						'div',
-						{ className: 'container' },
-						React.createElement(
-								'div',
-								{ className: 'row' },
-								React.createElement(
-										'div',
-										{ className: 'col-sm-12' },
-										React.createElement(
-												'form',
-												{ onSubmit: this.handleFormSubmit },
-												React.createElement(
-														'div',
-														{ className: 'radio' },
-														React.createElement(
-																'label',
-																null,
-																React.createElement('input', { type: 'radio', value: 'option1', checked: this.state.selectedOption === 'option1',
-																		onChange: this.handleOptionChange }),
-																'Option 1'
-														)
-												),
-												React.createElement(
-														'div',
-														{ className: 'radio' },
-														React.createElement(
-																'label',
-																null,
-																React.createElement('input', { type: 'radio', value: 'option2', checked: this.state.selectedOption === 'option2',
-																		onChange: this.handleOptionChange }),
-																'Option 2'
-														)
-												),
-												React.createElement(
-														'div',
-														{ className: 'radio' },
-														React.createElement(
-																'label',
-																null,
-																React.createElement('input', { type: 'radio', value: 'option3', checked: this.state.selectedOption === 'option3',
-																		onChange: this.handleOptionChange }),
-																'Option 3'
-														)
-												),
-												React.createElement(
-														'button',
-														{ className: 'btn btn-default', type: 'submit' },
-														'Save'
-												)
-										)
-								)
-						)
-				);
-		}
-});
-
-module.exports = Radiomenu;
-ReactDOM.render(React.createElement(Radiomenu, null), document.getElementById('radioselect'));
-
-/***/ }),
-
-/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

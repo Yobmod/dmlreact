@@ -89,14 +89,14 @@ var PassView = React.createClass({
 
 
 //var gridsize = new Board(19); //default board size
-
+//for x in [9,13,19], var gocontainerx = ...
 var GoContainer9 = React.createClass({
 		getInitialState: function(){
 			return {gridsize: "9"}; //default board size
 		},
 		render: function(){
 			var board = new Board(this.state.gridsize); // Board function defined glabally
-			return (<div  className="col-sm-8" id={this.state.gridsize}>
+			return (<div id={this.state.gridsize}>
 					<AlertView board={board} />
 		        	<PassView board={board} />
 					<BoardView board={board} />
@@ -110,7 +110,7 @@ var GoContainer13 = React.createClass({
 		},
 		render: function(){
 			var board = new Board(this.state.gridsize); // Board function defined glabally
-			return (<div  className="col-sm-8" id={this.state.gridsize}>
+			return (<div id={this.state.gridsize}>
 					<AlertView board={board} />
 		        	<PassView board={board} />
 					<BoardView board={board} />
@@ -123,7 +123,7 @@ var GoContainer19 = React.createClass({
 		},
 		render: function(){
 			var board = new Board(this.state.gridsize); // Board function defined glabally
-			return (<div  className="col-sm-8" id={this.state.gridsize}>
+			return (<div id={this.state.gridsize}>
 					<AlertView board={board} />
 		        	<PassView board={board} />
 					<BoardView board={board} />

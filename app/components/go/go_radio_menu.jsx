@@ -46,7 +46,7 @@ $(document).ready(function() {
 	$("#gomenubutton").click(function(e) {
 		var strcont = "#gocontainer";
     	var gridsize = strcont.concat($('input:checked').val());
-		$('.gocontain').not(gridsize).hide()
-		$(gridsize).show()
+		$('.gocontain').not(gridsize).fadeOut(1000).delay(500)
+		$(gridsize).delay(500).fadeIn(1000)
 	});
 })
