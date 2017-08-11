@@ -23,6 +23,7 @@ module.exports = {
 	  games: __dirname + '/app/games',
 	  typescript: __dirname + '/app/typescript',
 	  go_container: __dirname + '/app/go_container',
+	  patternomaly: __dirname + '/app/patternomaly',
 
    },
       //devtool: "source-map",// Enable sourcemaps for debugging webpack's output.

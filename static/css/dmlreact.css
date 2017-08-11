@@ -115,10 +115,7 @@ body {
   background-color: white;
   background-image: url("../img/tree.png");
   background-repeat: no-repeat;
-  background-position: 100% 0%;
-  background-attachment: fixed;
-  width: 800px;
-  height: auto;
+  background-position: bottom;
   font-family: "Arial", cursive;
   color: black; }
 

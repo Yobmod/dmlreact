@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -96,20 +96,22 @@ exports.Hello = (props) => React.createElement("h1", null,
 /* 6 */,
 /* 7 */,
 /* 8 */,
-/* 9 */
+/* 9 */,
+/* 10 */,
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = ReactDOM;
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(2);
-const ReactDOM = __webpack_require__(9);
+const ReactDOM = __webpack_require__(11);
 const typscritpto_1 = __webpack_require__(3);
 //import Hello from "./components/typscritpto";
 ReactDOM.render(React.createElement(typscritpto_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("example"));

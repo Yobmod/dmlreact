@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -220,7 +220,7 @@ exports.default = Board;
 
 /***/ }),
 
-/***/ 12:
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -232,11 +232,11 @@ var _go_board2 = _interopRequireDefault(_go_board);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Game = __webpack_require__(5);
+var Game = __webpack_require__(6);
 //var React = require('react');
 //var ReactDOM = require('react-dom');
 
-var Game = __webpack_require__(6);
+var Game = __webpack_require__(7);
 
 //todo: calculate winner, overlay screen declare wnner
 // stared nodes
@@ -253,7 +253,7 @@ var Game = __webpack_require__(6);
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -427,7 +427,7 @@ ReactDOM.render(React.createElement(GoContainer19, null), document.getElementByI
 
 /***/ }),
 
-/***/ 6:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
