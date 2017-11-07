@@ -36,18 +36,18 @@ module.exports = {
 	module: {
 		loaders: [
 			{	test: /\.(js|jsx)$/,
-				exclude: 'node_modules',
+				exclude:  __dirname + '/node_modules',
 				loader: 'babel-loader'	},
 			{ 	test: /\.(ts|tsx)?$/,
-		  		exclude: 'node_modules',
+		  		exclude:  __dirname + '/node_modules',
 				loader: "awesome-typescript-loader" }
 			],
 		//preLoaders: [{ test: /\.js$/, loader: "source-map-loader" } ] // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
 			},
 
 	externals: {  'jquery': 'jQuery',
-				  	'react': 'React',
-				    'react-dom': 'ReactDOM'  },
+				  	     'react': 'React',
+				         'react-dom': 'ReactDOM'  },
 
 	output: {
 		path: __dirname + '/static/js',

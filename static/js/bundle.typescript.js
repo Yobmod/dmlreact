@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -32,9 +32,6 @@
 /******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
 /******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
@@ -63,58 +60,57 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */,
-/* 1 */,
-/* 2 */
+/* 1 */
 /***/ (function(module, exports) {
 
 module.exports = React;
 
 /***/ }),
-/* 3 */
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(2);
+const React = __webpack_require__(1);
+const ReactDOM = __webpack_require__(10);
+const typscritpto_1 = __webpack_require__(11);
+//import Hello from "./components/typscritpto";
+ReactDOM.render(React.createElement(typscritpto_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("example"));
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = ReactDOM;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(1);
 exports.Hello = (props) => React.createElement("h1", null,
     "Hello from ",
     props.compiler,
     " and ",
     props.framework,
     "!");
-
-
-/***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = ReactDOM;
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(2);
-const ReactDOM = __webpack_require__(11);
-const typscritpto_1 = __webpack_require__(3);
-//import Hello from "./components/typscritpto";
-ReactDOM.render(React.createElement(typscritpto_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("example"));
 
 
 /***/ })

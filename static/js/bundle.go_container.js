@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -32,9 +32,6 @@
 /******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
 /******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
@@ -63,180 +60,28 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var Board = function Board(size) {
-    this.current_color = Board.BLACK;
-    this.size = size;
-    this.board = this.create_board(size);
-    this.last_move_passed = false;
-};
-
-Board.EMPTY = 0;
-Board.BLACK = 1;
-Board.WHITE = 2;
-
-Board.prototype.create_board = function (size) {
-    var m = [];
-    for (var i = 0; i < size; i++) {
-        m[i] = [];
-        for (var j = 0; j < size; j++) {
-            m[i][j] = Board.EMPTY;
-        }
-    }
-    return m;
-};
-
-Board.prototype.switch_player = function () {
-    this.current_color = this.current_color == Board.BLACK ? Board.WHITE : Board.BLACK;
-};
-
-Board.prototype.pass = function () {
-    if (this.last_move_passed) this.end_game();
-    this.last_move_passed = true;
-    this.switch_player();
-};
-
-Board.prototype.end_game = function () {
-    console.log("GAME OVER");
-    window.alert("GAME OVER");
-    //for([i][j]){wtotal = 0; if(white || all neighbours == white){wtotal += 1};
-    //if(wtotal > btotal){ alert("white wins")}else{alert("black wins")}
-};
-
-Board.prototype.play = function (i, j) {
-    console.log("Played at " + i + ", " + j);
-    this.attempted_suicide = this.in_atari = false;
-
-    if (this.board[i][j] != Board.EMPTY) return false;
-
-    var color = this.board[i][j] = this.current_color;
-    var captured = [];
-    var neighbors = this.get_adjacent_intersections(i, j);
-    var atari = false;
-
-    var self = this;
-    _.each(neighbors, function (n) {
-        var state = self.board[n[0]][n[1]];
-        if (state != Board.EMPTY && state != color) {
-            var group = self.get_group(n[0], n[1]);
-            console.log(group);
-            if (group["liberties"] == 0) captured.push(group);else if (group["liberties"] == 1) atari = true;
-        }
-    });
-
-    // detect suicide
-    if (_.isEmpty(captured) && this.get_group(i, j)["liberties"] == 0) {
-        this.board[i][j] = Board.EMPTY;
-        this.attempted_suicide = true;
-        $(this).trigger("suicide");
-        return false;
-    }
-
-    var self = this;
-    _.each(captured, function (group) {
-        _.each(group["stones"], function (stone) {
-            self.board[stone[0]][stone[1]] = Board.EMPTY;
-        });
-    });
-
-    $(this).trigger("update");
-
-    if (atari)
-        //
-        $(this).trigger("atari");
-    this.in_atari = true;
-    this.last_move_passed = false;
-    this.switch_player();
-    return true;
-};
-
-/*
- * Given a board position, returns a list of [i,j] coordinates representing
- * orthagonally adjacent intersections
- */
-Board.prototype.get_adjacent_intersections = function (i, j) {
-    var neighbors = [];
-    if (i > 0) neighbors.push([i - 1, j]);
-    if (j < this.size - 1) neighbors.push([i, j + 1]);
-    if (i < this.size - 1) neighbors.push([i + 1, j]);
-    if (j > 0) neighbors.push([i, j - 1]);
-    return neighbors;
-};
-
-/*
- * Performs a breadth-first search about an (i,j) position to find recursively
- * orthagonally adjacent stones of the same color (stones with which it shares
- * liberties). Returns null for if there is no stone at the specified position,
- * otherwise returns an object with two keys: "liberties", specifying the
- * number of liberties the group has, and "stones", the list of [i,j]
- * coordinates of the group's members.
- */
-Board.prototype.get_group = function (i, j) {
-
-    var color = this.board[i][j];
-    if (color == Board.EMPTY) return null;
-
-    var visited = {}; // for O(1) lookups
-    var visited_list = []; // for returning
-    var queue = [[i, j]];
-    var count = 0;
-
-    while (queue.length > 0) {
-        var stone = queue.pop();
-        if (visited[stone]) continue;
-
-        var neighbors = this.get_adjacent_intersections(stone[0], stone[1]);
-        var self = this;
-        _.each(neighbors, function (n) {
-            var state = self.board[n[0]][n[1]];
-            if (state == Board.EMPTY) count++;
-            if (state == color) queue.push([n[0], n[1]]);
-        });
-
-        visited[stone] = true;
-        visited_list.push(stone);
-    }
-
-    return {
-        "liberties": count,
-        "stones": visited_list
-    };
-};
-
-exports.default = Board;
-
-/***/ }),
-
-/***/ 14:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _go_board = __webpack_require__(1);
+var _go_board = __webpack_require__(2);
 
 var _go_board2 = _interopRequireDefault(_go_board);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Game = __webpack_require__(6);
+var Game = __webpack_require__(13);
 //var React = require('react');
 //var ReactDOM = require('react-dom');
 
-var Game = __webpack_require__(7);
+var Game = __webpack_require__(14);
 
 //todo: calculate winner, overlay screen declare wnner
 // stared nodes
@@ -253,13 +98,13 @@ var Game = __webpack_require__(7);
 
 /***/ }),
 
-/***/ 6:
+/***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _go_board = __webpack_require__(1);
+var _go_board = __webpack_require__(2);
 
 var _go_board2 = _interopRequireDefault(_go_board);
 
@@ -427,7 +272,7 @@ ReactDOM.render(React.createElement(GoContainer19, null), document.getElementByI
 
 /***/ }),
 
-/***/ 7:
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -516,6 +361,158 @@ $(document).ready(function () {
 		$(gridsize).delay(500).fadeIn(1000);
 	});
 });
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var Board = function Board(size) {
+    this.current_color = Board.BLACK;
+    this.size = size;
+    this.board = this.create_board(size);
+    this.last_move_passed = false;
+};
+
+Board.EMPTY = 0;
+Board.BLACK = 1;
+Board.WHITE = 2;
+
+Board.prototype.create_board = function (size) {
+    var m = [];
+    for (var i = 0; i < size; i++) {
+        m[i] = [];
+        for (var j = 0; j < size; j++) {
+            m[i][j] = Board.EMPTY;
+        }
+    }
+    return m;
+};
+
+Board.prototype.switch_player = function () {
+    this.current_color = this.current_color == Board.BLACK ? Board.WHITE : Board.BLACK;
+};
+
+Board.prototype.pass = function () {
+    if (this.last_move_passed) this.end_game();
+    this.last_move_passed = true;
+    this.switch_player();
+};
+
+Board.prototype.end_game = function () {
+    console.log("GAME OVER");
+    window.alert("GAME OVER");
+    //for([i][j]){wtotal = 0; if(white || all neighbours == white){wtotal += 1};
+    //if(wtotal > btotal){ alert("white wins")}else{alert("black wins")}
+};
+
+Board.prototype.play = function (i, j) {
+    console.log("Played at " + i + ", " + j);
+    this.attempted_suicide = this.in_atari = false;
+
+    if (this.board[i][j] != Board.EMPTY) return false;
+
+    var color = this.board[i][j] = this.current_color;
+    var captured = [];
+    var neighbors = this.get_adjacent_intersections(i, j);
+    var atari = false;
+
+    var self = this;
+    _.each(neighbors, function (n) {
+        var state = self.board[n[0]][n[1]];
+        if (state != Board.EMPTY && state != color) {
+            var group = self.get_group(n[0], n[1]);
+            console.log(group);
+            if (group["liberties"] == 0) captured.push(group);else if (group["liberties"] == 1) atari = true;
+        }
+    });
+
+    // detect suicide
+    if (_.isEmpty(captured) && this.get_group(i, j)["liberties"] == 0) {
+        this.board[i][j] = Board.EMPTY;
+        this.attempted_suicide = true;
+        $(this).trigger("suicide");
+        return false;
+    }
+
+    var self = this;
+    _.each(captured, function (group) {
+        _.each(group["stones"], function (stone) {
+            self.board[stone[0]][stone[1]] = Board.EMPTY;
+        });
+    });
+
+    $(this).trigger("update");
+
+    if (atari)
+        //
+        $(this).trigger("atari");
+    this.in_atari = true;
+    this.last_move_passed = false;
+    this.switch_player();
+    return true;
+};
+
+/*
+ * Given a board position, returns a list of [i,j] coordinates representing
+ * orthagonally adjacent intersections
+ */
+Board.prototype.get_adjacent_intersections = function (i, j) {
+    var neighbors = [];
+    if (i > 0) neighbors.push([i - 1, j]);
+    if (j < this.size - 1) neighbors.push([i, j + 1]);
+    if (i < this.size - 1) neighbors.push([i + 1, j]);
+    if (j > 0) neighbors.push([i, j - 1]);
+    return neighbors;
+};
+
+/*
+ * Performs a breadth-first search about an (i,j) position to find recursively
+ * orthagonally adjacent stones of the same color (stones with which it shares
+ * liberties). Returns null for if there is no stone at the specified position,
+ * otherwise returns an object with two keys: "liberties", specifying the
+ * number of liberties the group has, and "stones", the list of [i,j]
+ * coordinates of the group's members.
+ */
+Board.prototype.get_group = function (i, j) {
+
+    var color = this.board[i][j];
+    if (color == Board.EMPTY) return null;
+
+    var visited = {}; // for O(1) lookups
+    var visited_list = []; // for returning
+    var queue = [[i, j]];
+    var count = 0;
+
+    while (queue.length > 0) {
+        var stone = queue.pop();
+        if (visited[stone]) continue;
+
+        var neighbors = this.get_adjacent_intersections(stone[0], stone[1]);
+        var self = this;
+        _.each(neighbors, function (n) {
+            var state = self.board[n[0]][n[1]];
+            if (state == Board.EMPTY) count++;
+            if (state == color) queue.push([n[0], n[1]]);
+        });
+
+        visited[stone] = true;
+        visited_list.push(stone);
+    }
+
+    return {
+        "liberties": count,
+        "stones": visited_list
+    };
+};
+
+exports.default = Board;
 
 /***/ })
 

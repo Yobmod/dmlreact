@@ -10,6 +10,7 @@ var size = require('gulp-size'); // tell size of packed file
 var webpack = require('webpack');
 var webpackstream = require('webpack-stream');
 var webpackconfig = require('./webpack.config.js');
+
 var exec = require('child_process').exec; // run commands eg. python app.py
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -35,11 +36,11 @@ gulp.task('watching', function() {
 
 
 gulp.task('webpacking', function() {
-  var stream = gulp.src('./app/*') // Tells gulp where to look for source files?
+ var stream = gulp.src('./app/*') // Tells gulp where to look for source files?
   .pipe(webpackstream(webpackconfig, webpack)) // does webpack using the config file
   .pipe(gulp.dest('./static/js/'))  // adds another output destination if different from webpack.config
   .pipe(size()) // gived sum of packed package sizes
-  return stream;
+	return stream;
 });
 
 gulp.task('sassing', function() {
