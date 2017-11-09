@@ -58,7 +58,7 @@ gulp.task('lessing', function() {
 });
 
 gulp.task('runserver', function() {
-    var proc = exec('python app.py');
+  		var proc = setTimeout(function(){exec('python app.py')}, 1000)
 	return proc
 })
 

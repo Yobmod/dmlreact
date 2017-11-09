@@ -1,49 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>dmlreact</title>
+{% extends "base.html" %}
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	<link rel='stylesheet' href='./static/css/dmlreact.css'/>
-
-</head>
-
-<body>
-
-
-
-<div id="greeting" class="col-sm-6"></div>
-<div id="tweetbox" class="col-sm-6"></div>
-<div id="tweetbox" class="col-sm-6"></div>
-
-<div>
-	<h1>Index Links</h1>
-	<ul>
-		<li><a href="/hello">Hello</a></li>
-		<li><a href="/go">Go</a>
-		<li><a href="/tictactoe">TicTacToe</a>
-	</ul>
-</div>
-
-<div>
-	<h1>Index Links</h1>
-	<ul>
-		<li><a href="http://chibicode.com/react-js-introduction-for-people-who-know-just-enough-jquery-to-get-by">twitter box code</a>
-		<li><a href="https://facebook.github.io/react/tutorial/tutorial.html">TTT code</a>
-		<li><a href="https://rawgit.com/calebcassel/react-demo/master/part8.html">dogfood code</a>
-	</ul>
-</div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+{% block headextra %}
 <script type="text/javaScript" src="/static/js/bundle.app.js" defer></script>
+<script type="text/javaScript" src="/static/js/bundle.hello.js" defer></script>
+{% endblock headextra %}
 
-</body>
-</html>
+
+	{% block content %}
+
+	<div class="row">
+		<div id="greeting" class="col-sm-6"></div>
+		<div id="tweetbox" class="col-sm-6"></div>
+	</div>
+
+	<div class="row">
+	<div class="col-sm-6">
+		<h1>Index Links</h1>
+		<ul>
+			<li><a href="/hello">Hello</a></li>
+			<li><a href="/dogfood">dogfood</a></li>
+			<li><a href="/todos">Todo</a></li>
+			<li><a href="/go">Go</a></li>
+			<li><a href="/tictactoe">TicTacToe</a></li>
+			<li><a href="/connect4">Connect4</a></li>
+			<li><a href="/Simonsays">Simon Says</a></li>
+		</ul>
+	</div>
+
+
+	<div class="col-sm-6">
+		<h1>External Links</h1>
+		<ul>
+			<li><a href="http://chibicode.com/react-js-introduction-for-people-who-know-just-enough-jquery-to-get-by">twitter box code</a></li>
+			<li><a href="https://facebook.github.io/react/tutorial/tutorial.html">TTT code</a></li>
+			<li><a href="https://rawgit.com/calebcassel/react-demo/master/part8.html">dogfood code</a></li>
+			<li><a href="https://codepen.io/jeffleu/pen/KgbZwj">connect-4 example 1</a>, <a href="https://github.com/tonai/react-connect4"> 2</a></li>
+			<li><a href="https://weslleyaraujo.github.io/react-simon-says/#/board/">simon says example</a>, <a href="https://github.com/weslleyaraujo/react-simon-says"> code</a>, <a href="https://medium.com/@_weslleyaraujo/building-a-simons-says-game-with-react-redux-e950bfda90f1"> discn</a></li>
+			<li><a href="http://reactsimon.surge.sh/">simon says alt</a>, <a href="https://github.com/soulchainer/simongamejs/"> code</a></li>
+
+		</ul>
+	</div>
+</div> <!--row-->
+
+
+	{% endblock content %}

@@ -1,5 +1,5 @@
 //============================================================
-var GoMenu = React.createClass({
+var GoMenu = createReactClass({
 	getInitialState: function () {
     	return {selectedOption: "9"};
   	},

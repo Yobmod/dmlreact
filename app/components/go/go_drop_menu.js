@@ -1,4 +1,4 @@
-var Dropdown = React.createClass({
+var Dropdown = createReactClass({
 	getInitialState: function() {
 		return {
 			listVisible: false,

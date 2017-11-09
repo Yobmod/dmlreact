@@ -60,32 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 23);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/******/ ({
 
-"use strict";
-
-
-(function () {
-    var Greeting = React.createClass({
-        displayName: 'Greeting',
-
-        render: function render() {
-            return React.DOM.h1({}, 'Hello, ' + this.props.name + '!');
-        }
-    });
-
-    ReactDOM.render(React.createElement(Greeting, { name: 'RandoName' }), document.getElementById('greeting'));
-})();
-
-/***/ }),
-/* 1 */,
-/* 2 */,
-/* 3 */
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94,18 +74,20 @@
 //var React = require('react');
 //var ReactDOM = require('react-dom');
 
-var App = __webpack_require__(4);
-var Hello = __webpack_require__(0);
-var Todos = __webpack_require__(0);
+var App = __webpack_require__(24);
 
 /***/ }),
-/* 4 */
+
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var TweetBox = React.createClass({
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var TweetBox = exports.TweetBox = createReactClass({
   displayName: "TweetBox",
 
   getInitialState: function getInitialState() {
@@ -186,7 +168,6 @@ var TweetBox = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(TweetBox, null), document.getElementById("tweetbox"));
-
 /***/ })
-/******/ ]);
+
+/******/ });

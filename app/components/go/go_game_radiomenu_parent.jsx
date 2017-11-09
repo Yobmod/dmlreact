@@ -1,6 +1,6 @@
 var GRID_SIZE = 40; // size of grid squares
 
-var BoardIntersection = React.createClass({
+var BoardIntersection = createReactClass({
     handleClick: function() {
         this.props.board.play(this.props.row, this.props.col);
     },
@@ -20,7 +20,7 @@ var BoardIntersection = React.createClass({
     }
 });
 
-var BoardView = React.createClass({
+var BoardView = createReactClass({
     getInitialState: function() {
         var self = this;
         $(this.props.board).on("update", function(e) {
@@ -59,7 +59,7 @@ var BoardView = React.createClass({
     }
 });
 
-var AlertView = React.createClass({
+var AlertView = createReactClass({
     getInitialState: function() {
         var self = this;
         $(this.props.board).on("atari", function(e) {
@@ -81,7 +81,7 @@ var AlertView = React.createClass({
     }
 });
 
-var PassView = React.createClass({
+var PassView = createReactClass({
     handleClick: function(e) {
         this.props.board.pass();
     },
@@ -96,7 +96,7 @@ var PassView = React.createClass({
 
 //var gridsize = new Board(19); //default board size
 
-var GoContainer = React.createClass({
+var GoContainer = createReactClass({
 		getInitialState: function(){
 			return {gridsize: "9"}; //default board size
 		},
@@ -122,7 +122,7 @@ var GoContainer = React.createClass({
 })
 
 //============================================================
-var Radiomenu = React.createClass({
+var Radiomenu = createReactClass({
 	getInitialState: function () {
     	return {selectedOption: "19", gridsize: "19"};
   	},

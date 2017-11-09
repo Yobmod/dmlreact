@@ -1,9 +1,9 @@
-var TweetBox = React.createClass({
+export var TweetBox = createReactClass({
   getInitialState: function() {return {
       text: "",
       photoAdded: false,
       };
-	  
+
   },
   handleChange: function(event) {
   this.setState({ text: event.target.value });
@@ -48,10 +48,3 @@ overflowAlert: function() {
       </div>
                               );}
 });
-
-
-ReactDOM.render(
-  <TweetBox />,
-  document.getElementById("tweetbox")
-
-);

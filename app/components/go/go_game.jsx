@@ -2,7 +2,7 @@ import Board from './go_board';
 
 var GRID_SIZE = 40; // size of grid squares
 
-var BoardIntersection = React.createClass({
+var BoardIntersection = createReactClass({
     handleClick: function() {
         this.props.board.play(this.props.row, this.props.col);
     },
@@ -22,7 +22,7 @@ var BoardIntersection = React.createClass({
     }
 });
 
-var BoardView = React.createClass({
+var BoardView = createReactClass({
     getInitialState: function() {
         var self = this;
         $(this.props.board).on("update", function(e) {
@@ -54,7 +54,7 @@ var BoardView = React.createClass({
     }
 });
 
-var AlertView = React.createClass({
+var AlertView = createReactClass({
     getInitialState: function() {
         var self = this;
         $(this.props.board).on("atari", function(e) {
@@ -75,7 +75,7 @@ var AlertView = React.createClass({
     }
 });
 
-var PassView = React.createClass({
+var PassView = createReactClass({
     handleClick: function(e) {
         this.props.board.pass();
     },
@@ -90,7 +90,7 @@ var PassView = React.createClass({
 
 //var gridsize = new Board(19); //default board size
 //for x in [9,13,19], var gocontainerx = ...
-var GoContainer9 = React.createClass({
+var GoContainer9 = createReactClass({
 		getInitialState: function(){
 			return {gridsize: "9"}; //default board size
 		},
@@ -104,7 +104,7 @@ var GoContainer9 = React.createClass({
 		}
 })
 
-var GoContainer13 = React.createClass({
+var GoContainer13 = createReactClass({
 		getInitialState: function(){
 			return {gridsize: "13"}; //default board size
 		},
@@ -117,7 +117,7 @@ var GoContainer13 = React.createClass({
 					</div>)
 		}
 })
-var GoContainer19 = React.createClass({
+var GoContainer19 = createReactClass({
 		getInitialState: function(){
 			return {gridsize: "19"}; //default board size
 		},

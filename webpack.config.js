@@ -20,10 +20,13 @@ module.exports = {
   entry: {
 	  app: __dirname + '/app/index', //entry point, make for each page or load comonent.js for each div. Webpack should codesplit better so can bundle all together?
 	  hello: __dirname + '/app/hello',
-	  games: __dirname + '/app/games',
-	  typescript: __dirname + '/app/typescript',
+    dogfood: __dirname + '/app/dogfood',
+    todos: __dirname + '/app/todos',
+    tweetbox: __dirname + '/app/tweetbox',
+	  tictactoe: __dirname + '/app/tictactoe',
+	  //typescript: __dirname + '/app/typescript',
 	  go_container: __dirname + '/app/go_container',
-	  patternomaly: __dirname + '/app/patternomaly',
+	  //patternomaly: __dirname + '/app/patternomaly',
 
    },
       //devtool: "source-map",// Enable sourcemaps for debugging webpack's output.
@@ -47,7 +50,9 @@ module.exports = {
 
 	externals: {  'jquery': 'jQuery',
 				  	     'react': 'React',
-				         'react-dom': 'ReactDOM'  },
+				         'react-dom': 'ReactDOM',
+               'create-react-class': 'createReactClass'
+             },
 
 	output: {
 		path: __dirname + '/static/js',

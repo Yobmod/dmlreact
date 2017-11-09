@@ -1,20 +1,21 @@
 {	"compileOnSave": true,
 	"tabSize": 4,
-    "compilerOptions": {
-        "outDir": "./static/js/",
+  "compilerOptions": {
+        "outDir": "./static/js/tsoutput",
         "sourceMap": false,
         "noImplicitAny": true,
-		"removeComments": false,
-		"module": "commonjs",
-        "target": "es6",
-        "jsx": "react"
+				"removeComments": false,
+				"allowSyntheticDefaultImports": true,
+				"module": "commonjs",
+				"target": "es6",
+        "jsx": "react",
+				"lib": ["es2015", "es2016", "es2017", "es5", "es6", "DOM"]
     },
-    "include": [
+	  "include": [
         "./app/**/*"
     ],
-	"types": [
-        "core-js",
-		"react",
-		"react-dom"
-    ]
+		"exclude": [
+		"node_modules",
+		"**/*.spec.ts"
+	]
 }

@@ -1,6 +1,10 @@
+"use strict";
 
 //var React = require('react');
 //var ReactDOM = require('react-dom');
+//const _each = require('lodash/each');   		//imported in go_board. Alterative, use underscore.js in html
+//const _isEmpty = require('lodash/isEmpty'); 	//imported in go_board. Alterative, use underscore.js in html
+
 
 import Board from './components/go/go_board';
 var Game = require ('./components/go/go_game');

@@ -60,58 +60,112 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */,
-/* 1 */
+/******/ ({
+
+/***/ 1:
 /***/ (function(module, exports) {
 
 module.exports = React;
 
 /***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */
+
+/***/ 30:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(1);
-const ReactDOM = __webpack_require__(10);
-const typscritpto_1 = __webpack_require__(11);
-//import Hello from "./components/typscritpto";
-ReactDOM.render(React.createElement(typscritpto_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("example"));
 
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactDom = __webpack_require__(4);
+
+var ReactDOM = _interopRequireWildcard(_reactDom);
+
+var _todos = __webpack_require__(5);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+//import Hello from "./components/typscritpto";
+
+
+ReactDOM.render(React.createElement(TweetBox, null), document.getElementById("tweetbox"));
 
 /***/ }),
-/* 10 */
+
+/***/ 4:
 /***/ (function(module, exports) {
 
 module.exports = ReactDOM;
 
 /***/ }),
-/* 11 */
+
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(1);
-exports.Hello = (props) => React.createElement("h1", null,
-    "Hello from ",
-    props.compiler,
-    " and ",
-    props.framework,
-    "!");
+const createReactClass = __webpack_require__(6);
+exports.Todos = createReactClass({
+    getInitialState: function () {
+        return {
+            todos: [
+                "I am done",
+                "I am not done"
+            ]
+        };
+    },
+    addTodoItem: function (todoItem) {
+        this.state.todos.push(todoItem);
+        this.setState({ todos: this.state.todos });
+    },
+    render: function () {
+        var todos = this.state.todos.map(function (todo) {
+            return React.createElement("div", null, todo);
+        });
+        return React.createElement("div", null,
+            React.createElement("h3", null, "Todo(s)"),
+            todos,
+            React.createElement(TodoForm, { addItem: this.addTodoItem }));
+    }
+});
+var TodoForm = createReactClass({
+    getInitialState: function () {
+        return {
+            todoInput: ""
+        };
+    },
+    handleClick: function (e) {
+        e.preventDefault();
+        this.props.addTodoItem(this.state.todoInput);
+        this.setState({ todoInput: "" });
+    },
+    handleOnChange: function (e) {
+        e.preventDefault();
+        this.setState({ todoInput: e.target.value });
+    },
+    render: function () {
+        return React.createElement("div", null,
+            React.createElement("br", null),
+            React.createElement("input", { type: "text", value: this.state.todoInput, onChange: this.handleOnChange }),
+            React.createElement("button", { onClick: this.handleClick }, "Add Todo"));
+    }
+});
 
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = createReactClass;
 
 /***/ })
-/******/ ]);
+
+/******/ });

@@ -1,3 +1,6 @@
+const _each = require('lodash/each');
+const _isEmpty = require('lodash/isEmpty');
+
 var Board = function(size) {
     this.current_color = Board.BLACK;
     this.size = size;
@@ -51,7 +54,7 @@ Board.prototype.play = function(i, j) {
     var atari = false;
 
     var self = this;
-    _.each(neighbors, function(n) {
+    _each(neighbors, function(n) {
         var state = self.board[n[0]][n[1]];
         if (state != Board.EMPTY && state != color) {
             var group = self.get_group(n[0], n[1]);
@@ -64,7 +67,7 @@ Board.prototype.play = function(i, j) {
     });
 
     // detect suicide
-    if (_.isEmpty(captured) && this.get_group(i, j)["liberties"] == 0) {
+    if (_isEmpty(captured) && this.get_group(i, j)["liberties"] == 0) {
         this.board[i][j] = Board.EMPTY;
 		this.attempted_suicide = true;
         $(this).trigger("suicide");
@@ -72,8 +75,8 @@ Board.prototype.play = function(i, j) {
     }
 
     var self = this;
-    _.each(captured, function(group) {
-        _.each(group["stones"], function(stone) {
+    _each(captured, function(group) {
+        _each(group["stones"], function(stone) {
             self.board[stone[0]][stone[1]] = Board.EMPTY;
         });
     });
@@ -132,7 +135,7 @@ Board.prototype.get_group = function(i, j) {
 
         var neighbors = this.get_adjacent_intersections(stone[0], stone[1]);
         var self = this;
-        _.each(neighbors, function(n) {
+        _each(neighbors, function(n) {
             var state = self.board[n[0]][n[1]];
             if (state == Board.EMPTY)
                 count++;

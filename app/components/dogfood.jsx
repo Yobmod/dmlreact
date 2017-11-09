@@ -1,5 +1,4 @@
-(function() {
-    var Treat = React.createClass({
+    var Treat = createReactClass({
         render: function() {
             var src = 'static/img/icons/icon_' + this.props.type + '.png';
             return (
@@ -10,7 +9,7 @@
         }
     });
 
-    var Treats = React.createClass({
+    var Treats = createReactClass({
         render: function() {
             var treats = this.props.data.map((treat, index) =>
 			{return <ul key={index}>
@@ -26,7 +25,7 @@
         }
     });
 
-    var DogFooder = React.createClass({
+    var DogFooder = createReactClass({
         getInitialState: function() {
             return {
                 treats: []
@@ -82,4 +81,3 @@
     });
 
     ReactDOM.render(<DogFooder />, document.getElementById('dogfood'));
-})();

@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>dmlGo</title>
+{% extends "base.html" %}
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	<link rel='stylesheet' href='./static/css/dmlreact.css'/>
-	<link rel='stylesheet' href='./static/css/dmlgames.css'/>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js" ></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-</head>
+{% block headextra %}
+<title>dmlGo</title>
+<link rel='stylesheet' href='./static/css/dmlgames.css'/>
+{% endblock headextra %}
 
-<body>
+
+{% block content %}
+
 
 <h1>Go!</h1>
 <div id="gomenu"></div>
@@ -26,15 +16,12 @@
 <div id="gocontainer9" class = "gocontain" style="display: block"></div>
 <div id="gocontainer13" class = "gocontain" style="display: none"></div>
 <div id="gocontainer19" class = "gocontain" style="display: none"></div>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
 </div>
 
+{% endblock content %}
 
+
+{% block scriptextra %}
 <script type="text/javascript" src="/static/js/bundle.go_container.js" defer></script>
-</body>
-</html>
+{% endblock scriptextra %}

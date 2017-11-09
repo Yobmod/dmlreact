@@ -1,13 +1,9 @@
-(function() {
-    var Greeting = React.createClass({
-        render: function() {
-            return (
-                React.DOM.h1({}, 'Hello, ' + this.props.name + '!')
-            );
-        }
-    });
 
-    ReactDOM.render(
-		<Greeting name='RandoName' />, 
-		document.getElementById('greeting'));
-})();
+var Greeting = function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+ReactDOM.render(
+		<Greeting name='RandoLName' />,
+		document.getElementById('greeting')
+    );
