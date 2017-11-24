@@ -1,6 +1,6 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory #type: ignore
 import os
-from flask_static_compress import FlaskStaticCompress
+from flask_static_compress import FlaskStaticCompress #type: ignore
 
 app = Flask(__name__)
 compress = FlaskStaticCompress(app)
@@ -46,7 +46,7 @@ def connect4():
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/x-icon')
 
-COMPRESSOR_ENABLED = False
+COMPRESSOR_ENABLED: bool = False
 
 if __name__ == '__main__':
     app.run(debug=True)
