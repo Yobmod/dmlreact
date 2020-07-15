@@ -47,7 +47,7 @@
     "gulp-util": "*",
     "html-webpack-plugin": "*",
     "jquery": "*",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "patternomaly": "*",
     "prop-types": "^15.6.0",
     "py-loader": "^0.1.3",
