@@ -16,7 +16,7 @@ Flask-SQLAlchemy==2.3.2
 Flask-Static-Compress==1.0.2
 itsdangerous==0.24
 jac==0.16.3
-Jinja2==2.9.6
+Jinja2==2.11.3
 limits==1.2.1
 Mako==1.0.7
 MarkupSafe==1.0
