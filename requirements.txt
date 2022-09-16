@@ -18,7 +18,7 @@ itsdangerous==0.24
 jac==0.16.3
 Jinja2==2.9.6
 limits==1.2.1
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 mimerender==0.6.0
 ordereddict==1.1
